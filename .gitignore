@@ -1,0 +1,13 @@
+__pycache__
+migrations
+venv
+pipfile.lock
+bootstrap
+node_modules
+.env
+.env.dev
+.env.development
+.env.production
+*.log
+staticfiles
+frontend/webpack-stats.json
