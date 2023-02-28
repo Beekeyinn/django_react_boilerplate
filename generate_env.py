@@ -41,8 +41,8 @@ def main():
         database_port = args.database[2]
         database_username = args.database[3]
         database_password = args.database[4]
-    if args.openai:
-        openai_key = args.openai
+    if args.key:
+        openai_key = args.key
     else:
         print(" Please provide the key for open api")
         return
@@ -52,17 +52,18 @@ def main():
         config = json.load(fle)
 
     with open(".env", "w", encoding="utf-8") as env:
-        env.write(f"SECRET_KEY={secret_key}\n\n\n\n\n")
+        env.write(f"SECRET_KEY={secret_key}\n\n")
+        env.write(f"ALLOWED_HOSTS={config['ALLOWED_HOSTS']}\n")
+        env.write(f"TIMEZONE={config['TIMEZONE']}\n")
+        env.write(f"ADD_SLASH=False\n")
         env.write(f"DEBUG={config['DEBUG']}\n\n\n\n")
-        env.write(f"# ---------------DATABASE-------------")
+        env.write(f"# ---------------DATABASE-------------\n")
         env.write(f"DATABASE_HOST={database_host}\n")
         env.write(f"DATABASE_NAME={database_name}\n")
         env.write(f"DATABASE_USERNAME={database_username}\n")
         env.write(f"DATABASE_PASSWORD={database_password}\n")
         env.write(f"DATABASE_PORT={database_port}\n\n\n\n")
-        env.write(f"# ---------------Allowed Host-------------")
-        env.write(f"ALLOWED_HOSTS={config['ALLOWED_HOSTS']}\n")
-        env.write(f"TIMEZONE={config['TIMEZONE']}\n")
+        env.write(f"# ---------------KEYS-------------\n")
         env.write(f"STABILTY_API_KEY={openai_key}")
 
     print("completed")
