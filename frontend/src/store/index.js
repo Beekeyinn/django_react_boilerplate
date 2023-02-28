@@ -9,4 +9,4 @@ const store = configureStore({
     getDefaultMiddleware().concat(stableAPI.middleware),
 });
 
-export default store;
+export { store };

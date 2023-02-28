@@ -9,7 +9,8 @@ from decouple import config
 from .logging import *
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent.parent.parent
+BASE_DIR = Path(__file__).resolve().parent.parent.parent
+print("BASE-------------------------------------------", BASE_DIR)
 
 SECRET_KEY = config("SECRET_KEY")
 
@@ -72,12 +73,6 @@ TEMPLATES = [
 WSGI_APPLICATION = 'base.wsgi.application'
 
 
-# AUTHENTICATION_BACKENDS = [
-#     'django.contrib.auth.backends.ModelBackend',
-#     'allauth.account.auth_backends.AuthenticationBackend',
-# ]
-# AUTH_USER_MODEL = "accounts.User"
-
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
@@ -135,46 +130,14 @@ if DEBUG:
                                                  "http://127.0.0.1:3000",
                                                  "http://127.0.0.1:8000",
                                                  "http://localhost:8000"]
-# CORS_ORIGIN_ALLOW_ALL = True
 CORS_ALLOW_CREDENTIALS = True
-# Cookies
-# CSRF_COOKIE_NAME = 'XSRF-TOKEN'
-# CSRF_HEADER_NAME = 'HTTP_X_XSRF_TOKEN'
+
 
 # Session
 if not DEBUG:
     SESSION_COOKIE_DOMAIN = "stable.candybitsocial.com"
     SESSION_COOKIE_SAMESITE = "None"
     SESSION_COOKIE_SECURE = True
-
-
-# LOGIN_URL = "accounts/login"
-# LOGIN_REDIRECT = "candybit_gpt"
-# Allauth configurations
-# SOCIALACCOUNT_LOGIN_ON_GET = True
-# ACCOUNT_USERNAME_REQUIRED = False
-# ACCOUNT_AUTHENTICATION_METHOD = "email"
-# SITE_ID = 1
-# ACCOUNT_EMAIL_VERIFICATION = False
-# LOGIN_REDIRECT_URL = "/candy_bit_gpt"
-# ACCOUNT_LOGOUT_ON_GET = True
-# SITE_ID = 1
-# SOCIALACCOUNT_AUTO_SIGNUP = True
-# ACCOUNT_EMAIL_REQUIRED = True
-# SOCIALACCOUNT_ADAPTER = "base.adapters.OrganizationSocialAccountAdapter"
-
-# SOCIALACCOUNT_PROVIDERS = {
-#     'google': {
-#         'SCOPE': [
-#             'profile',
-#             'email',
-#         ],
-#         'AUTH_PARAMS': {
-#             'access_type': 'online',
-#         },
-#         'OAUTH_PKCE_ENABLED': True,
-#     }
-# }
 
 
 REST_FRAMEWORK = {

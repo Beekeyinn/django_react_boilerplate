@@ -2,7 +2,6 @@ from django.conf import settings
 from django.contrib.auth.models import AnonymousUser
 from django.views.generic import RedirectView
 
-from apps.accounts.models import User
 
 
 class AuthenticatedRedirectView(RedirectView):
@@ -12,9 +11,9 @@ class AuthenticatedRedirectView(RedirectView):
         return super().get_redirect_url(*args, **kwargs)
 
 
-def get_user(request):
+# def get_user(request):
     
-    if settings.DEBUG and isinstance(request.user, AnonymousUser):
-        return User.objects.all().first()
-    else:
-        return request.user
+#     if settings.DEBUG and isinstance(request.user, AnonymousUser):
+#         return User.objects.all().first()
+#     else:
+#         return request.user

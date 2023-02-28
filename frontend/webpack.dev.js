@@ -79,7 +79,7 @@ module.exports = (env) => ({
   },
   plugins: [
     new HtmlWebpackPlugin({
-      title: "Chat with CandyBit",
+      title: "Stability Candybit Social",
       filename: "index.html",
       template: "public/index.html",
     }),

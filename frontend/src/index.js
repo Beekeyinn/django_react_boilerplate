@@ -6,12 +6,10 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./assets/css/main.css";
 import { store } from "./store";
-const Chat = React.lazy(() => import("./pages/chat"));
-const ChatDetail = React.lazy(() => import("./pages/chatDetail"));
+const App = React.lazy(() => import("./App"));
 
 const components = {
-  chat: Chat,
-  chatDetail: ChatDetail,
+  app: App,
 };
 
 const componentMapper = (id, Component) => {
@@ -35,8 +33,7 @@ if (process.env.DEVELOPMENT === "true") {
       <ToastContainer />
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Chat />} />
-          <Route path=":chatId" element={<ChatDetail />} />
+          <Route path="/" element={<App />} />
         </Routes>
       </BrowserRouter>
     </Provider>
