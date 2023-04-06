@@ -7,30 +7,6 @@ var BundleTracker = require("webpack-bundle-tracker");
 var WriteFilePlugin = require("write-file-webpack-plugin");
 const Dotenv = require("dotenv-webpack");
 
-// const findStyles = (directoryPath) => {
-//   let obj = {
-//     main: [
-//       path.resolve(__dirname, "src/index.js"),
-
-//     ],
-//   };
-//   const filesNames = fs.readdirSync(directoryPath);
-//   for (const fileName of filesNames) {
-//     const filePath = path.join(directoryPath, fileName);
-//     const fileStat = fs.statSync(filePath);
-//     if (fileStat.isFile()) {
-//       const fileExtension = path.extname(fileName);
-//       if (fileExtension === ".css") {
-//         let filename = path.basename(filePath).split(".")[0];
-//         obj[filename] = filePath;
-//       }
-//       continue;
-//     }
-//     if (fileStat.isDirectory()) {
-//       findStyles(filePath);
-//     }
-//   }
-// };
 module.exports = (env) => ({
   mode: "production",
   entry: {

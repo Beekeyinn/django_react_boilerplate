@@ -17,7 +17,19 @@ from django.contrib import admin
 from django.urls import path
 from django.views.generic import TemplateView
 
+from apps.accounts.views import (
+    bad_request_error,
+    page_not_found_error,
+    permission_denied,
+    server_error,
+)
+
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('', TemplateView.as_view(template_name="index.html"), name="index"),
+    path("admin/", admin.site.urls),
+    path("", TemplateView.as_view(template_name="index.html"), name="index"),
 ]
+
+handler400 = bad_request_error
+handler500 = server_error
+handler403 = permission_denied
+handler404 = page_not_found_error

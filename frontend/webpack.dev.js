@@ -79,15 +79,10 @@ module.exports = (env) => ({
   },
   plugins: [
     new HtmlWebpackPlugin({
-      title: "Stability Candybit Social",
+      title: "Open AI Research",
       filename: "index.html",
       template: "public/index.html",
     }),
-    // new MiniCssExtractPlugin({
-    //   filename: "static/css/[name].css",
-    //   chunkFilename: "static/css/[name].[contenthash:8].chunk.css",
-    // }),
-
     new BundleTracker({
       filename: "webpack-stats.json",
     }),

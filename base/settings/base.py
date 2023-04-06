@@ -1,4 +1,3 @@
-
 import mimetypes
 import os
 from ast import literal_eval
@@ -10,7 +9,6 @@ from .logging import *
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
-print("BASE-------------------------------------------", BASE_DIR)
 
 SECRET_KEY = config("SECRET_KEY")
 
@@ -19,77 +17,71 @@ APPEND_SLASH = config("ADD_SLASH", cast=bool)
 ALLOWED_HOSTS = literal_eval(config("ALLOWED_HOSTS"))
 
 DJANGO_APPS = [
-    'django.contrib.admin',
-    'django.contrib.auth',
-    'django.contrib.contenttypes',
-    'django.contrib.sessions',
+    "django.contrib.admin",
+    "django.contrib.auth",
+    "django.contrib.contenttypes",
+    "django.contrib.sessions",
     "django.contrib.sites",
-    'django.contrib.messages',
-    'django.contrib.staticfiles',
+    "django.contrib.messages",
+    "django.contrib.staticfiles",
 ]
 
-THIRD_PARTY_APPS = [
-    "whitenoise",
-    "rest_framework",
-    "django_filters",
-    "corsheaders"
-]
+THIRD_PARTY_APPS = ["whitenoise", "rest_framework", "django_filters", "corsheaders"]
 
-CUSTOM_APPS = [
-]
+CUSTOM_APPS = []
 
 
-INSTALLED_APPS = DJANGO_APPS+THIRD_PARTY_APPS+CUSTOM_APPS
+INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + CUSTOM_APPS
 
 MIDDLEWARE = [
     "corsheaders.middleware.CorsMiddleware",
-    'django.middleware.security.SecurityMiddleware',
-    'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
-    'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.contrib.messages.middleware.MessageMiddleware',
-    'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    "django.middleware.security.SecurityMiddleware",
+    "django.contrib.sessions.middleware.SessionMiddleware",
+    "django.middleware.common.CommonMiddleware",
+    "django.middleware.csrf.CsrfViewMiddleware",
+    "django.contrib.auth.middleware.AuthenticationMiddleware",
+    "django.contrib.messages.middleware.MessageMiddleware",
+    "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 
-ROOT_URLCONF = 'base.urls'
+ROOT_URLCONF = "base.urls"
 
 TEMPLATES = [
     {
-        'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, "templates")],
-        'APP_DIRS': True,
-        'OPTIONS': {
-            'context_processors': [
-                'django.template.context_processors.debug',
-                'django.template.context_processors.request',
-                'django.contrib.auth.context_processors.auth',
-                'django.contrib.messages.context_processors.messages',
+        "BACKEND": "django.template.backends.django.DjangoTemplates",
+        "DIRS": [os.path.join(BASE_DIR, "templates")],
+        "APP_DIRS": True,
+        "OPTIONS": {
+            "context_processors": [
+                "django.template.context_processors.debug",
+                "django.template.context_processors.request",
+                "django.contrib.auth.context_processors.auth",
+                "django.contrib.messages.context_processors.messages",
             ],
         },
     },
 ]
 
-WSGI_APPLICATION = 'base.wsgi.application'
+WSGI_APPLICATION = "base.wsgi.application"
 
 
 AUTH_PASSWORD_VALIDATORS = [
     {
-        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
+        "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator",
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+        "NAME": "django.contrib.auth.password_validation.MinimumLengthValidator",
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
+        "NAME": "django.contrib.auth.password_validation.CommonPasswordValidator",
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
+        "NAME": "django.contrib.auth.password_validation.NumericPasswordValidator",
     },
 ]
 
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = "en-us"
 
 TIME_ZONE = config("TIMEZONE")
 
@@ -99,10 +91,8 @@ USE_L10N = True
 
 USE_TZ = True
 
-STATIC_URL = '/static/'
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "static")
-]
+STATIC_URL = "/static/"
+STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
 
 
 mimetypes.add_type("text/css", ".css", True)
@@ -112,7 +102,7 @@ mimetypes.add_type("script", ".js", True)
 
 WHITENOISE_MIMETYPES = {".js": "application/javascript", ".css": "text/css"}
 
-DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 
 if DEBUG:
@@ -121,15 +111,14 @@ else:
     from .prod import *
 
 
-CORS_ALLOWED_ORIGINS = [
-    "https://stable.candybitsocial.com"
-
-]
+CORS_ALLOWED_ORIGINS = ["https://stable.candybitsocial.com"]
 if DEBUG:
-    CORS_ALLOWED_ORIGINS = CORS_ALLOWED_ORIGINS+["http://localhost:3000",
-                                                 "http://127.0.0.1:3000",
-                                                 "http://127.0.0.1:8000",
-                                                 "http://localhost:8000"]
+    CORS_ALLOWED_ORIGINS = CORS_ALLOWED_ORIGINS + [
+        "http://localhost:3000",
+        "http://127.0.0.1:3000",
+        "http://127.0.0.1:8000",
+        "http://localhost:8000",
+    ]
 CORS_ALLOW_CREDENTIALS = True
 
 
@@ -141,17 +130,20 @@ if not DEBUG:
 
 
 REST_FRAMEWORK = {
-    'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend', 'rest_framework.filters.SearchFilter'],
-    'DEFAULT_AUTHENTICATION_CLASSES': [
-        'rest_framework.authentication.SessionAuthentication',
+    "DEFAULT_FILTER_BACKENDS": [
+        "django_filters.rest_framework.DjangoFilterBackend",
+        "rest_framework.filters.SearchFilter",
     ],
-
+    "DEFAULT_AUTHENTICATION_CLASSES": [
+        "rest_framework.authentication.SessionAuthentication",
+    ],
 }
 
 
 if not DEBUG:
-    REST_FRAMEWORK['DEFAULT_PERMISSION_CLASSES'] = [
-        'rest_framework.permissions.IsAuthenticated',
+    REST_FRAMEWORK["DEFAULT_PERMISSION_CLASSES"] = [
+        "rest_framework.permissions.IsAuthenticated",
     ]
-    REST_FRAMEWORK['DEFAULT_RENDERER_CLASSES'] = [
-        'rest_framework.renderers.JSONRenderer',]
+    REST_FRAMEWORK["DEFAULT_RENDERER_CLASSES"] = [
+        "rest_framework.renderers.JSONRenderer",
+    ]

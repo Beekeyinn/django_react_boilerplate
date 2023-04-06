@@ -11,8 +11,7 @@ def generate_secrets(
 
 
 def main():
-    parser = argparse.ArgumentParser(
-        description="Used to generate the env file")
+    parser = argparse.ArgumentParser(description="Used to generate the env file")
     parser.add_argument(
         "-d",
         "--database",
@@ -25,7 +24,7 @@ def main():
         "-k",
         "--key",
         type=str,
-        help="provide dream studio key",
+        help="provide OPEN AI key",
     )
     database_host = "localhost"
     database_name = "candybit_openai"
@@ -64,7 +63,7 @@ def main():
         env.write(f"DATABASE_PASSWORD={database_password}\n")
         env.write(f"DATABASE_PORT={database_port}\n\n\n\n")
         env.write(f"# ---------------KEYS-------------\n")
-        env.write(f"STABILTY_API_KEY={openai_key}")
+        env.write(f"OPEN_AI_KEY={openai_key}")
 
     print("completed")
 
