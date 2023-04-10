@@ -1,3 +1,4 @@
+# Create your models here.
 from django.db import models
 
 from apps.accounts.models import User
@@ -5,6 +6,15 @@ from base.models import ExtraFieldsModelsMixin
 
 
 # Create your models here.
+class AllowedHostDomain(ExtraFieldsModelsMixin, models.Model):
+    """
+    Used to store all the domain name that can be logged in through google login.
+
+    """
+
+    host_domain = models.CharField(max_length=25)
+
+
 class Theme(ExtraFieldsModelsMixin, models.Model):
     theme = models.CharField(unique=True, max_length=25)
 

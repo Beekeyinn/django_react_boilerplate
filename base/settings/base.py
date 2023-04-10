@@ -26,9 +26,18 @@ DJANGO_APPS = [
     "django.contrib.staticfiles",
 ]
 
-THIRD_PARTY_APPS = ["whitenoise", "rest_framework", "django_filters", "corsheaders"]
+THIRD_PARTY_APPS = [
+    "whitenoise",
+    "rest_framework",
+    "django_filters",
+    "corsheaders",
+    "allauth",
+    "allauth.account",
+    "allauth.socialaccount",
+    "allauth.socialaccount.providers.google",
+]
 
-CUSTOM_APPS = []
+CUSTOM_APPS = ["apps.accounts", "apps.user_settings"]
 
 
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + CUSTOM_APPS
@@ -64,7 +73,11 @@ TEMPLATES = [
 
 WSGI_APPLICATION = "base.wsgi.application"
 
-
+AUTHENTICATION_BACKENDS = [
+    "django.contrib.auth.backends.ModelBackend",
+    "allauth.account.auth_backends.AuthenticationBackend",
+]
+AUTH_USER_MODEL = "accounts.User"
 AUTH_PASSWORD_VALIDATORS = [
     {
         "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator",
@@ -96,7 +109,7 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
 
 
 mimetypes.add_type("text/css", ".css", True)
-mimetypes.add_type("js/application", ".js", True)
+mimetypes.add_type("application/javascript", ".js", True)
 mimetypes.add_type("script", ".js", True)
 
 
@@ -147,3 +160,34 @@ if not DEBUG:
     REST_FRAMEWORK["DEFAULT_RENDERER_CLASSES"] = [
         "rest_framework.renderers.JSONRenderer",
     ]
+
+
+# Django All Auth Config
+SOCIALACCOUNT_LOGIN_ON_GET = True
+ACCOUNT_USERNAME_REQUIRED = False
+ACCOUNT_AUTHENTICATION_METHOD = "email"
+SITE_ID = 1
+ACCOUNT_EMAIL_VERIFICATION = False
+LOGIN_REDIRECT_URL = "/"
+ACCOUNT_LOGOUT_ON_GET = True
+SITE_ID = 1
+SOCIALACCOUNT_AUTO_SIGNUP = True
+ACCOUNT_EMAIL_REQUIRED = True
+SOCIALACCOUNT_STORE_TOKENS = True
+# SOCIALACCOUNT_ADAPTER = "base.adapters.OrganizationSocialAccountAdapter"
+
+SOCIALACCOUNT_PROVIDERS = {
+    "google": {
+        "SCOPE": [
+            "profile",
+            "email",
+            "https://www.googleapis.com/auth/adwords",
+            "https://www.googleapis.com/auth/analytics",
+            "https://www.googleapis.com/auth/analytics.readonly",
+            "https://www.googleapis.com/auth/analytics.edit",
+        ],
+        "AUTH_PARAMS": {
+            "access_type": "offline",
+        },
+    }
+}

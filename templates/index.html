@@ -1,7 +1,38 @@
 {% extends "layouts/base.html" %}
+{% load static %}
+{% load socialaccount %}
 {% block title %}
-    Stability Candybit AI
+    Google login
 {% endblock title %}
 {% block content %}
-    <div id="stability">DOne Done DOne Done .............</div>
+    <div class="login-board">
+        <div class="company d-flex mb-4 justify-content-left align-items-center">
+            <div class="company-logo d-flex align-items-center justify-content-center bg-dark">
+                <img src="{% static 'images/wikijs-butterfly.svg' %}"
+                     alt="Qode Media"
+                     height="60%"
+                     width="60%"/>
+            </div>
+            <div class="company-title ps-2">
+                <h2 class="text-black-75">Qode Media</h2>
+            </div>
+        </div>
+        <div class="provider-selector px-2 pt-2">
+            <p class="text-center fw-bold">Select Authentication Provider</p>
+        </div>
+        <div class="social-provider-list d-flex flex-column">
+            <div class="provider p-3">
+                <a href="{% provider_login_url 'google' %}"
+                   class="social-login mx-auto card flex-row text-decoration-none d-flex justify-content-start align-items-center px-3 py-2">
+                    <div class="provider-logo d-flex justify-content-between align-items-center">
+                        <img src="{% static 'images/google_logo.jpg' %}"
+                             alt="Google"
+                             height="70%"
+                             width="70%"/>
+                    </div>
+                    <div class="fs-6 text-dark">Qode Media Email</div>
+                </a>
+            </div>
+        </div>
+    </div>
 {% endblock content %}
